@@ -55,10 +55,11 @@ class PieChart extends React.Component {
 
   renderMultipleData(center) {
     const {expandedIndex} = this.state
-    const {data, expandOnHover, ...props} = this.props
+    const {data, expandOnHover, baseRadius, ...props} = this.props
     return (
       <Sectors
         center={center}
+        baseRadius={baseRadius}
         data={
           expandOnHover
             ? data.map((d, i) => ({
@@ -107,6 +108,7 @@ PieChart.propTypes = {
     })
   ).isRequired,
   expandOnHover: PropTypes.bool,
+  baseRadius: PropTypes.number,
   expandSize: PropTypes.number,
   expandedIndex: PropTypes.number,
   onSectorHover: PropTypes.func,

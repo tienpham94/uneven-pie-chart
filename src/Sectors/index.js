@@ -10,6 +10,7 @@ const Sectors = ({
   expandSize,
   strokeWidth,
   strokeColor,
+  baseRadius,
   ...props
 }) => {
   const total = data.reduce((prev, current) => current.value + prev, 0)
@@ -20,8 +21,8 @@ const Sectors = ({
       {data.map((d, i) => {
         const isLarge = d.value / total > 0.5
         const angle = 360 * d.value / total
-        const radius = center + (d.expanded ? expandSize : 0) - strokeWidth / 2
-
+        // const radius = center + (d.expanded ? expandSize : 0) - strokeWidth / 2
+        const radius = baseRadius * (Math.log(d.value)/ Math.log(total) )
         angleStart = angleEnd
         angleEnd = angleStart + angle
 
